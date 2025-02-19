@@ -3,7 +3,7 @@
  * GRAPHDECO research group, https://team.inria.fr/graphdeco
  * All rights reserved.
  *
- * This software is free for non-commercial, research and evaluation use 
+ * This software is free for non-commercial, research and evaluation use
  * under the terms of the LICENSE.md file.
  *
  * For inquiries contact  george.drettakis@inria.fr
@@ -132,7 +132,7 @@ __device__ void computeColorFromSH(int idx, int deg, int max_coeffs, const glm::
 	// Account for normalization of direction
 	float3 dL_dmean = dnormvdv(float3{ dir_orig.x, dir_orig.y, dir_orig.z }, float3{ dL_ddir.x, dL_ddir.y, dL_ddir.z });
 
-	// Gradients of loss w.r.t. Gaussian means, but only the portion 
+	// Gradients of loss w.r.t. Gaussian means, but only the portion
 	// that is caused because the mean affects the view-dependent color.
 	// Additional mean gradient is accumulated in below methods.
 	dL_dmeans[idx] += glm::vec3(dL_dmean.x, dL_dmean.y, dL_dmean.z);
@@ -306,12 +306,12 @@ __device__ void computeColorFromSH_4D(int idx, int deg, int deg_t, int max_coeff
 						l0m0 * sh[16] +
 						l1m1 * sh[17] +
 						l1m0 * sh[18] +
-						l1p1 * sh[19] + 
+						l1p1 * sh[19] +
 						l2m2 * sh[20] +
 						l2m1 * sh[21] +
 						l2m0 * sh[22] +
 						l2p1 * sh[23] +
-						l2p2 * sh[24] + 
+						l2p2 * sh[24] +
 						l3m3 * sh[25] +
 						l3m2 * sh[26] +
 						l3m1 * sh[27] +
@@ -321,11 +321,11 @@ __device__ void computeColorFromSH_4D(int idx, int deg, int deg_t, int max_coeff
 						l3p3 * sh[31]);
 
 					dRGBdx += t1 * (
-						dl1p1_dx * sh[19] + 
-						dl2m2_dx * sh[20] + 
-						dl2m0_dx * sh[22] + 
-						dl2p1_dx * sh[23] + 
-						dl2p2_dx * sh[24] + 
+						dl1p1_dx * sh[19] +
+						dl2m2_dx * sh[20] +
+						dl2m0_dx * sh[22] +
+						dl2p1_dx * sh[23] +
+						dl2p2_dx * sh[24] +
 						dl3m3_dx * sh[25] +
 						dl3m2_dx * sh[26] +
 						dl3m1_dx * sh[27] +
@@ -337,10 +337,10 @@ __device__ void computeColorFromSH_4D(int idx, int deg, int deg_t, int max_coeff
 
 					dRGBdy += t1 * (
 						dl1m1_dy * sh[17] +
-						dl2m2_dy * sh[20] + 
-						dl2m1_dy * sh[21] + 
-						dl2m0_dy * sh[22] + 
-						dl2p2_dy * sh[24] + 
+						dl2m2_dy * sh[20] +
+						dl2m1_dy * sh[21] +
+						dl2m0_dy * sh[22] +
+						dl2p2_dy * sh[24] +
 						dl3m3_dy * sh[25] +
 						dl3m2_dy * sh[26] +
 						dl3m1_dy * sh[27] +
@@ -352,8 +352,8 @@ __device__ void computeColorFromSH_4D(int idx, int deg, int deg_t, int max_coeff
 
 					dRGBdz += t1 * (
 						dl1m0_dz * sh[18] +
-						dl2m1_dz * sh[21] + 
-						dl2m0_dz * sh[22] + 
+						dl2m1_dz * sh[21] +
+						dl2m0_dz * sh[22] +
 						dl2p1_dz * sh[23] +
 						dl3m2_dz * sh[26] +
 						dl3m1_dz * sh[27] +
@@ -370,12 +370,12 @@ __device__ void computeColorFromSH_4D(int idx, int deg, int deg_t, int max_coeff
 							l0m0 * sh[32] +
 							l1m1 * sh[33] +
 							l1m0 * sh[34] +
-							l1p1 * sh[35] + 
+							l1p1 * sh[35] +
 							l2m2 * sh[36] +
 							l2m1 * sh[37] +
 							l2m0 * sh[38] +
 							l2p1 * sh[39] +
-							l2p2 * sh[40] + 
+							l2p2 * sh[40] +
 							l3m3 * sh[41] +
 							l3m2 * sh[42] +
 							l3m1 * sh[43] +
@@ -385,11 +385,11 @@ __device__ void computeColorFromSH_4D(int idx, int deg, int deg_t, int max_coeff
 							l3p3 * sh[47]);
 
 						dRGBdx += t2 * (
-							dl1p1_dx * sh[35] + 
-							dl2m2_dx * sh[36] + 
-							dl2m0_dx * sh[38] + 
-							dl2p1_dx * sh[39] + 
-							dl2p2_dx * sh[40] + 
+							dl1p1_dx * sh[35] +
+							dl2m2_dx * sh[36] +
+							dl2m0_dx * sh[38] +
+							dl2p1_dx * sh[39] +
+							dl2p2_dx * sh[40] +
 							dl3m3_dx * sh[41] +
 							dl3m2_dx * sh[42] +
 							dl3m1_dx * sh[43] +
@@ -401,10 +401,10 @@ __device__ void computeColorFromSH_4D(int idx, int deg, int deg_t, int max_coeff
 
 						dRGBdy += t2 * (
 							dl1m1_dy * sh[33] +
-							dl2m2_dy * sh[36] + 
-							dl2m1_dy * sh[37] + 
-							dl2m0_dy * sh[38] + 
-							dl2p2_dy * sh[40] + 
+							dl2m2_dy * sh[36] +
+							dl2m1_dy * sh[37] +
+							dl2m0_dy * sh[38] +
+							dl2p2_dy * sh[40] +
 							dl3m3_dy * sh[41] +
 							dl3m2_dy * sh[42] +
 							dl3m1_dy * sh[43] +
@@ -416,8 +416,8 @@ __device__ void computeColorFromSH_4D(int idx, int deg, int deg_t, int max_coeff
 
 						dRGBdz += t2 * (
 							dl1m0_dz * sh[34] +
-							dl2m1_dz * sh[37] + 
-							dl2m0_dz * sh[38] + 
+							dl2m1_dz * sh[37] +
+							dl2m0_dz * sh[38] +
 							dl2p1_dz * sh[39] +
 							dl3m2_dz * sh[42] +
 							dl3m1_dz * sh[43] +
@@ -447,7 +447,7 @@ __device__ void computeColorFromSH_4D(int idx, int deg, int deg_t, int max_coeff
 }
 
 // Backward version of INVERSE 2D covariance matrix computation
-// (due to length launched as separate kernel before other 
+// (due to length launched as separate kernel before other
 // backward steps contained in preprocess)
 __global__ void computeCov2DCUDA(int P,
 	const float3* means,
@@ -468,19 +468,19 @@ __global__ void computeCov2DCUDA(int P,
 	// Reading location of 3D covariance for this Gaussian
 	const float* cov3D = cov3Ds + 6 * idx;
 
-	// Fetch gradients, recompute 2D covariance and relevant 
+	// Fetch gradients, recompute 2D covariance and relevant
 	// intermediate forward results needed in the backward.
 	float3 mean = means[idx];
 	float3 dL_dconic = { dL_dconics[4 * idx], dL_dconics[4 * idx + 1], dL_dconics[4 * idx + 3] };
 	float3 t = transformPoint4x3(mean, view_matrix);
-	
+
 	const float limx = 1.3f * tan_fovx;
 	const float limy = 1.3f * tan_fovy;
 	const float txtz = t.x / t.z;
 	const float tytz = t.y / t.z;
 	t.x = min(limx, max(-limx, txtz)) * t.z;
 	t.y = min(limy, max(-limy, tytz)) * t.z;
-	
+
 	const float x_grad_mul = txtz < -limx || txtz > limx ? 0 : 1;
 	const float y_grad_mul = tytz < -limy || tytz > limy ? 0 : 1;
 
@@ -520,14 +520,14 @@ __global__ void computeCov2DCUDA(int P,
 		dL_dc = denom2inv * (-a * a * dL_dconic.z + 2 * a * b * dL_dconic.y + (denom - a * c) * dL_dconic.x);
 		dL_db = denom2inv * 2 * (b * c * dL_dconic.x - (denom + 2 * b * b) * dL_dconic.y + a * b * dL_dconic.z);
 
-		// Gradients of loss L w.r.t. each 3D covariance matrix (Vrk) entry, 
+		// Gradients of loss L w.r.t. each 3D covariance matrix (Vrk) entry,
 		// given gradients w.r.t. 2D covariance matrix (diagonal).
 		// cov2D = transpose(T) * transpose(Vrk) * T;
 		dL_dcov[6 * idx + 0] = (T[0][0] * T[0][0] * dL_da + T[0][0] * T[1][0] * dL_db + T[1][0] * T[1][0] * dL_dc);
 		dL_dcov[6 * idx + 3] = (T[0][1] * T[0][1] * dL_da + T[0][1] * T[1][1] * dL_db + T[1][1] * T[1][1] * dL_dc);
 		dL_dcov[6 * idx + 5] = (T[0][2] * T[0][2] * dL_da + T[0][2] * T[1][2] * dL_db + T[1][2] * T[1][2] * dL_dc);
 
-		// Gradients of loss L w.r.t. each 3D covariance matrix (Vrk) entry, 
+		// Gradients of loss L w.r.t. each 3D covariance matrix (Vrk) entry,
 		// given gradients w.r.t. 2D covariance matrix (off-diagonal).
 		// Off-diagonal elements appear twice --> double the gradient.
 		// cov2D = transpose(T) * transpose(Vrk) * T;
@@ -576,14 +576,14 @@ __global__ void computeCov2DCUDA(int P,
 	// t = transformPoint4x3(mean, view_matrix);
 	float3 dL_dmean = transformVec4x3Transpose({ dL_dtx, dL_dty, dL_dtz+dL_dmean2D[idx].z }, view_matrix);
 
-	// Gradients of loss w.r.t. Gaussian means, but only the portion 
+	// Gradients of loss w.r.t. Gaussian means, but only the portion
 	// that is caused because the mean affects the covariance matrix.
 	// Additional mean gradient is accumulated in BACKWARD::preprocess.
 	dL_dmeans[idx] = dL_dmean;
 }
 
-// Backward pass for the conversion of scale and rotation to a 
-// 3D covariance matrix for each Gaussian. 
+// Backward pass for the conversion of scale and rotation to a
+// 3D covariance matrix for each Gaussian.
 __device__ void computeCov3D(int idx, const glm::vec3 scale, float mod, const glm::vec4 rot, const float* dL_dcov3Ds, glm::vec3* dL_dscales, glm::vec4* dL_drots)
 {
 	// Recompute (intermediate) results for the 3D covariance computation.
@@ -914,7 +914,7 @@ renderCUDA(
 	__shared__ float collected_flows[2*BLOCK_SIZE];
 
 	// In the forward, we stored the final value for T, the
-	// product of all (1 - alpha) factors. 
+	// product of all (1 - alpha) factors.
 	const float T_final = inside ? final_Ts[pix_id] : 0;
 	float T = T_final;
 
@@ -947,7 +947,7 @@ renderCUDA(
 	float last_flow[2] = { 0 };
 	float last_depth = 0;
 
-	// Gradient of pixel coordinate w.r.t. normalized 
+	// Gradient of pixel coordinate w.r.t. normalized
 	// screen-space viewport corrdinates (-1 to 1)
 	const float ddelx_dx = 0.5 * W;
 	const float ddely_dy = 0.5 * H;
@@ -1012,7 +1012,7 @@ renderCUDA(
 
 				const float dL_dchannel = dL_dpixel[ch];
 				dL_dalpha += (c - accum_rec[ch]) * dL_dchannel;
-				// Update the gradients w.r.t. color of the Gaussian. 
+				// Update the gradients w.r.t. color of the Gaussian.
 				// Atomic, since this pixel is just one of potentially
 				// many that were affected by this Gaussian.
 				atomicAdd(&(dL_dcolors[global_id * C + ch]), dchannel_dcolor * dL_dchannel);
@@ -1114,10 +1114,10 @@ void BACKWARD::preprocess(
 	glm::vec4* dL_drot_r,
 	float* dL_dopacity)
 {
-	// Propagate gradients for the path of 2D conic matrix computation. 
-	// Somewhat long, thus it is its own kernel rather than being part of 
+	// Propagate gradients for the path of 2D conic matrix computation.
+	// Somewhat long, thus it is its own kernel rather than being part of
 	// "preprocess". When done, loss gradient w.r.t. 3D means has been
-	// modified and gradient w.r.t. 3D covariance matrix has been computed.	
+	// modified and gradient w.r.t. 3D covariance matrix has been computed.
 	computeCov2DCUDA << <(P + 255) / 256, 256 >> > (
 		P,
 		means3D,
